@@ -14,4 +14,15 @@ class User_m extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
-}    
+    // tambahain fungsion baru untuk menampilkan data user sesuai dgn yg terlogin
+    public function get($id = null)
+    {
+        $this->db->from('user'); // table user
+        if($id != null) { // jika idnya tidak null maka wherenya
+            $this->db->where('user_id', $id);
+        }
+            $query = $this->db->get();
+            return $query;
+        }
+    }
+    

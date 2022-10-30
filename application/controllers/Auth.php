@@ -5,7 +5,10 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
+		check_already_login(); // ambilnya ini dari fungsi_helper.php
+
 		$this->load->view('login');
+
 	}
 	public function process()
 	{	
@@ -34,5 +37,14 @@ class Auth extends CI_Controller {
 					</script>";
 			}
 		}	
+	}
+
+	public function logout ()
+	{
+		// parameternya disesuaikan aja yang dicetak apa yg di hapus apa
+		$params = array('userid','level');
+		$this->session->unset_userdata($params);
+		// kl sudah logout kita arahkan ke halaman login
+		redirect('auth/login');
 	}
 }

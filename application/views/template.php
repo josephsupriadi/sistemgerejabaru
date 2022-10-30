@@ -23,7 +23,7 @@
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?=base_url()?>assets/index2.html" class="logo">
+    <a href="<?=base_url('dashboard')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b>G</span>
       <!-- logo for regular state and mobile devices --> 
@@ -74,7 +74,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image">
-              <span class="hidden-xs">Admin</span>
+              <span class="hidden-xs"><?=$this->fungsi->user_login()->username?></span>   <!-- fungsi ini untuk menampilkan Superadmin dan admin sesuai dengan field yang didatabase -->
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -82,8 +82,8 @@
                 <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle">
 
                 <p>
-                 Kelompok 1 - Web Developer
-                  <small>UKRIM 2022</small>
+                <?=$this->fungsi->user_login()->name?>  <!-- tampilkan name sesuai field yang ada diDatabase -->
+                  <small> <?=$this->fungsi->user_login()->address?></small> <!-- tampilkan addres/alamat sesuai field yang ada diDatabase -->
                 </p>
               </li>
              
@@ -93,7 +93,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default bg-red">Sign out</a>
+                  <a href="<?= site_url('auth/logout')?>" class="btn btn-default bg-red">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -114,7 +114,7 @@
           <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p><?=ucfirst($this->fungsi->user_login()->username)?></p> <!-- ucfisrt fungsi nya agar huruf yang pertama besar -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -133,15 +133,15 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-            <a href=""><i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <a href="<?= site_url('dashboard')?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
         </li>    
         <li>
-            <a href=""><i class="fa fa-truck"></i> <span>Data jemaat</span>
+            <a href="<?= site_url('keuangan')?>"><i class="fa fa-truck"></i> <span>Keuangan</span>
         </a>
         </li>    
         <li>
-            <a href=""><i class="fa fa-users"></i> <span>Ibadah</span>
+            <a href="<?= site_url('ibadah')?>"><i class="fa fa-users"></i> <span>Ibadah</span>
         </a>
         </li>    
          
@@ -154,19 +154,21 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Data Jemaat</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Baptis</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Perkawinan</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Kelahiran</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Kematian</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Pindah Jemaat</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Pengurus Gereja</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Pendeta</a></li>
+            <li><a href="<?= site_url('datajemaat')?>"><i class="fa fa-circle-o"></i> Data Jemaat</a></li>
+            <li><a href="<?= site_url('baptis')?>"><i class="fa fa-circle-o"></i> Baptis</a></li>
+            <li><a href="<?= site_url('perkawian')?>"><i class="fa fa-circle-o"></i> Perkawinan</a></li>
+            <li><a href="<?= site_url('kelahiran')?>"><i class="fa fa-circle-o"></i> Kelahiran</a></li>
+            <li><a href="<?= site_url('kematian')?>"><i class="fa fa-circle-o"></i> Kematian</a></li>
+            <li><a href="<?= site_url('pindahjemaat')?>"><i class="fa fa-circle-o"></i> Pindah Jemaat</a></li>
+            <li><a href="<?= site_url('pengurusgereja')?>"><i class="fa fa-circle-o"></i> Pengurus Gereja</a></li>
+            <li><a href="<?= site_url('pendeta')?>"><i class="fa fa-circle-o"></i> Pendeta</a></li>
           </ul>
         </li>
         
+        <?php if($this->session->userdata('level') == 1 ) { ?> <!-- heading Antara SuperAdmin dan Admin, Kondisi ini tu jika levelnya 1 dia akan ditampilkan -->
         <li class="header">SETTINGS</li>
-        <li><a href="#"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <li><a href="<?= site_url('user')?>"><i class="fa fa-user"></i> <span>Users</span></a></li>
+        <?php } ?>
       </ul>
     </section>
   </aside>
