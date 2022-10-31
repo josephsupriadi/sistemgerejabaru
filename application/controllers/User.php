@@ -15,6 +15,20 @@ class User extends CI_Controller {
 
     public function add()
     {
-        $this->template->load('template','user/user_form_add');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('fullname', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required|mint_lenght[5]');
+
+
+        if ($this->form_validation->run('signup') == FALSE)
+            {
+                $this->template->load('template','user/user_form_add');
+            }
+            else
+            {
+                   echo "Proses Simpan data User baru";
+            }
+
+        
     }
 }
