@@ -154,7 +154,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= site_url('datajemaat')?>"><i class="fa fa-circle-o"></i> Data Jemaat</a></li>
+            <li><a href="<?= site_url('jemaat')?>"><i class="fa fa-circle-o"></i> Data Jemaat</a></li>
             <li><a href="<?= site_url('baptis')?>"><i class="fa fa-circle-o"></i> Baptis</a></li>
             <li><a href="<?= site_url('perkawian')?>"><i class="fa fa-circle-o"></i> Perkawinan</a></li>
             <li><a href="<?= site_url('kelahiran')?>"><i class="fa fa-circle-o"></i> Kelahiran</a></li>

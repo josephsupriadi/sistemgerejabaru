@@ -30,23 +30,23 @@
                         <form action="" method="post">
                             <div class="form-group">
                                 <label>Name *</label> <!-- Fungsi dari * adalah agar dia required atau wajib diisi -->
-                                <input type="text" name="fullname" class="form-control">
+                                <input type="text" name="fullname" value="<?= set_value('fullname')?>" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Username *</label>
-                                <input type="text" name="username" class="form-control">
+                                <input type="text" name="username" value="<?= set_value('username')?>" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Password *</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" value="<?= set_value('password')?>"  class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Password Confirmation *</label>
-                                <input type="password" name="passconf" class="form-control">
+                                <input type="password" name="passconf" value="<?= set_value('passconf')?>" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <textarea name="address" class="form-control"></textarea>
+                                <textarea name="address" class="form-control"><?= set_value('address')?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Level *</label>

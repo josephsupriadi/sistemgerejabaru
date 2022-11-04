@@ -25,6 +25,7 @@ class User extends CI_Controller {
 
         $this->form_validation->set_message('required', ' %s masih kosong, silahkan isi'); 
         $this->form_validation->set_message('min_length', ' {field} minimal 5 karakter'); 
+        $this->form_validation->set_message('is_unique', ' {field} ini sudah dipakai, ganti'); 
 
         if ($this->form_validation->run('signup') == FALSE)
             {
