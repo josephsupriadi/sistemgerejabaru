@@ -10,25 +10,27 @@ class Jemaat extends CI_Controller
 
 	public function index()
 	{
-		$this->template->load('template');
-		// $this->load->view('template/sidebar');
 		$dataJemaat = $this->ModelJemaat->getAll();
 		$data = array(
 			"jemaats" => $dataJemaat
 		);
-		$this->load->view('content/jemaat/v_list_jemaat', $data);
-		$this->load->view('template/footer');
+		$this->template->load('template', 'content/jemaat/list_jemaat', $data);
+		// $this->load->view('content/jemaat/v_list_jemaat', $data);
+		// $this->load->view('template/footer');
+		// $this->load->view('a');
 	}
-}
+
 
 	// //untuk me load tampilan form tambah jemaat
-	// public function tambah()
-	// {
-	// 	$this->load->view('template/header');
+	public function tambah()
+	{
+		$this->template->load('template', 'content/jemaat/add_jemaat');
+	// 	// $this->load->view('template/header');
 	// 	$this->load->view('template/sidebar');
 	// 	$this->load->view("content/jemaat/v_add_jemaat");
 	// 	$this->load->view('template/footer');
-	// }
+	}
+}
 
 	// public function insert()
 	// {
